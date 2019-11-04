@@ -44,6 +44,7 @@ public class Credit {
     { 
 		Scanner input = new Scanner(System.in); 
         Credit c1 = new Credit();
+        System.out.println("Sorry No AMEX");
         System.out.println("Card Name:");
         c1.setCardName(input.nextLine());
         System.out.println("Card Number:");
@@ -68,10 +69,12 @@ public class Credit {
     { 
        return (getSize(number) >= 13 &&  
                getSize(number) <= 16) &&  
-               (prefixMatched(number, 4) ||  
-                prefixMatched(number, 5) ||  
-                prefixMatched(number, 37) ||  
-                prefixMatched(number, 6)) &&  
+               //visa
+    		   (prefixMatched(number, 4) ||  
+               //mastercard
+    		    prefixMatched(number, 5) ||   
+                //disc
+    		    prefixMatched(number, 6)) &&  
               ((sumOfDoubleEvenPlace(number) +  
                 sumOfOddPlace(number)) % 10 == 0); 
     } 
@@ -87,8 +90,7 @@ public class Credit {
         return sum; 
     } 
   
-    // Return this number if it is a single digit, otherwise, 
-    // return the sum of the two digits 
+    // Check Validility if Modulous of ten
     public static int getDigit(int number) 
     { 
         if (number < 9) 
