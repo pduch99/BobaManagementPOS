@@ -55,13 +55,16 @@ public class Credit {
         System.out.println("Card SSV:");
         c1.setCardSSV(input.nextInt());
         long number = c1.getCardNumber();
-        
-        System.out.println(number + " is " +  
-        (isValid(number) ? "valid" : "invalid")); 
+        String name = c1.getCardName();
+        int lastFour = (int) (number % 10000);
+       
+		System.out.println("The card belonging to "+ name + " ending in " + lastFour + " is " +  
+        (isValid(number) ? "Accepted" : "Declined")); 
     } 
   
     // Return true if the card number is valid 
-    public static boolean isValid(long number) 
+	
+	public static boolean isValid(long number) 
     { 
        return (getSize(number) >= 13 &&  
                getSize(number) <= 16) &&  
