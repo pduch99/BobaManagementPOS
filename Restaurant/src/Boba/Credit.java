@@ -63,7 +63,7 @@ public class Credit {
         (isValid(number) ? "Accepted" : "Declined")); 
     } 
   
-    // Return true if the card number is valid 
+    // Step 1 Return true if the card number is valid 
 	
 	public static boolean isValid(long number) 
     { 
@@ -79,7 +79,7 @@ public class Credit {
                 sumOfOddPlace(number)) % 10 == 0); 
     } 
   
-    // Get the result from Step 2 
+    // Get the boolean result from Step 1
     public static int sumOfDoubleEvenPlace(long number) 
     { 
         int sum = 0; 
