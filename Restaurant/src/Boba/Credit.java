@@ -1,13 +1,13 @@
 package Boba;
 import java.util.Scanner;
 public class Credit {
-	
+	//Set Attributes of Credit Card
 	private String cardName;
 	private long cardNumber;
 	private int cardMonth;
 	private int cardYear;
 	private int cardSSV;
-	
+	//Set Setters and Getters for Credit card Info
 	public void setCardName(String cardName) {
 		this.cardName = cardName;
 	}
@@ -33,18 +33,19 @@ public class Credit {
 		return cardSSV;
 	}
 	
-	
 	public void setCardNumber(long cardNumber) {
 		this.cardNumber = cardNumber;
 	}
 	public long getCardNumber() {
 		return cardNumber;
 	}
+	//Main Function
 	public static void main(String[] args) 
     { 
+		//Retreive Card Detail from USER INPUT
 		Scanner input = new Scanner(System.in); 
         Credit c1 = new Credit();
-        System.out.println("Sorry No AMEX");
+        System.out.println("Sorry No AMEX"); //Notify no AMEX Taken
         System.out.println("Card Name:");
         c1.setCardName(input.nextLine());
         System.out.println("Card Number:");
@@ -55,9 +56,9 @@ public class Credit {
         c1.setCardYear(input.nextInt());
         System.out.println("Card SSV:");
         c1.setCardSSV(input.nextInt());
-        long number = c1.getCardNumber();
-        String name = c1.getCardName();
-        int lastFour = (int) (number % 10000);
+        long number = c1.getCardNumber(); //Set Number to card number to validate
+        String name = c1.getCardName(); //Set Name to card name for display
+        int lastFour = (int) (number % 10000); //retreive last 4 digits of card
        
 		System.out.println("The card belonging to "+ name + " ending in " + lastFour + " is " +  
         (isValid(number) ? "Accepted" : "Declined")); 
@@ -79,7 +80,9 @@ public class Credit {
                 sumOfOddPlace(number)) % 10 == 0); 
     } 
   
-    // Get the boolean result from Step 1
+   
+	//Card Companies use algorithm of Luhn Algorithm
+	// Get the boolean result from Step 1
     public static int sumOfDoubleEvenPlace(long number) 
     { 
         int sum = 0; 
@@ -98,7 +101,7 @@ public class Credit {
         return number / 10 + number % 10; 
     } 
   
-    // Return sum of odd-place digits in number 
+    // Return sum of odd digits in number 
     public static int sumOfOddPlace(long number) 
     { 
         int sum = 0; 
