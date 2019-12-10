@@ -10,6 +10,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import com.sun.xml.internal.ws.addressing.v200408.MemberSubmissionAddressingConstants;
+
 import javax.swing.*;
 
 public class mainScreen extends JFrame implements ActionListener {
@@ -24,8 +27,10 @@ public class mainScreen extends JFrame implements ActionListener {
 	private JLabel loginLbl = new JLabel("Please Log In here");
 	private JLabel restaurantLbl = new JLabel("Access the menu here");
 	private JLabel managementLbl = new JLabel("Managers Access Records here");
+	public static JLabel employLbl = new JLabel("Please log-in");
 
 	private JPanel topPanel = new JPanel(new GridLayout(3, 2));
+	private JPanel infoPanel = new JPanel(new BorderLayout());
 	//login_S fr = new login_S();
 
 	public mainScreen(String title) {
@@ -34,6 +39,7 @@ public class mainScreen extends JFrame implements ActionListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(400, 400);
 		setLayout(new BorderLayout());
+		createInfoPanel();
 		createTopPanel();
 		addPanelsToFrame();
 		setActionListener();
@@ -43,16 +49,19 @@ public class mainScreen extends JFrame implements ActionListener {
 
 	private void addPanelsToFrame() {
 		add(topPanel, BorderLayout.CENTER);
-
+		add(infoPanel, BorderLayout.NORTH);
 //		add(middlePanel);
 //		add(bottomPanel);
 	}
 
 	private void createTopPanel() {
+		topPanel.add(managementBtn);
 		topPanel.add(loginBtn);
 		topPanel.add(restaurantBtn);
-		topPanel.add(managementBtn);
-
+	}
+	
+	private void createInfoPanel() {
+		infoPanel.add(employLbl);
 	}
 
 	private void setActionListener() {

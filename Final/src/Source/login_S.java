@@ -21,7 +21,8 @@ public class login_S {
 	private JPasswordField txtPassword;
 	private Employee[] workers = new Employee[10];
 	private ArrayList<Integer> positions = new ArrayList<Integer>(10); //keeps track of the open indexes in workers
-	private static boolean loggedOn = false;
+	public static boolean loggedOn = false; //Tracks if a user is logged on, 
+	private static String loggedUser;
 
 	/**
 	 * Launch the application.
@@ -87,10 +88,12 @@ public class login_S {
 				String username = txtUsername.getText();
 				for(int i = 0; i < workers.length; i++) {
 					if(workers[i].isName(username) && workers[i].isPassword(password)) {
-						JOptionPane.showMessageDialog(frame, "Login fucking sucsessful", "Management Login Systems", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(frame, "Login sucsessful", "Management Login Systems", JOptionPane.INFORMATION_MESSAGE);
 						txtPassword.setText(null);
 						txtUsername.setText(null);
 						loggedOn = true;
+						loggedUser = username;
+						mainScreen.employLbl.setText("Welcome " + username);
 						break;
 					} else {
 						JOptionPane.showMessageDialog(frame, "Invalid Login Details", "Management Login Systems", JOptionPane.ERROR_MESSAGE);
@@ -135,9 +138,9 @@ public class login_S {
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame frmLoginSystems = new JFrame("Exit");
-				if(JOptionPane.showConfirmDialog(frame, "Confirm if you want to exit", "Login Systems", JOptionPane.YES_NO_OPTION)== 
+				if(JOptionPane.showConfirmDialog(frmLoginSystems, "Confirm if you want to exit", "Login Systems", JOptionPane.YES_NO_OPTION)== 
 						JOptionPane.YES_NO_OPTION) {
-					System.exit(0);
+					frame.dispose();
 				}
 				
 			}
@@ -186,4 +189,7 @@ public class login_S {
 			}
 		}
 	}
+	
+	public String getLoggedUser()
+	{ return loggedUser; }
 }
