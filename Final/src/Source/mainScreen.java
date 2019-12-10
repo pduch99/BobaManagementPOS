@@ -92,7 +92,7 @@ public class mainScreen extends JFrame implements ActionListener {
 		}
 
 		if (callingBtn.equalsIgnoreCase("Employee Log In")) {
-			System.out.println("You can now log in");
+			//System.out.println("You can now log in");
 			if (e.getSource() == loginBtn) {
 				showlogFrame();
 				// OPEN THE SEARCH WINDOW

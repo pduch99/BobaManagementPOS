@@ -2,6 +2,8 @@ package Source;
 
 import java.awt.EventQueue;
 
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -17,6 +19,9 @@ public class login_S {
 	private JFrame frame;
 	private JTextField txtUsername;
 	private JPasswordField txtPassword;
+	private Employee[] workers = new Employee[10];
+	private ArrayList<Integer> positions = new ArrayList<Integer>(10); //keeps track of the open indexes in workers
+	private static boolean loggedOn = false;
 
 	/**
 	 * Launch the application.
@@ -38,6 +43,10 @@ public class login_S {
 	 * Create the application.
 	 */
 	public login_S() {
+		for(int i = 0; i < 10; i++)
+		{
+			positions.add(i, i);
+		}
 		initialize();
 	}
 
@@ -74,22 +83,34 @@ public class login_S {
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String password = txtPassword.getText();
+				String password = new String(txtPassword.getPassword());
 				String username = txtUsername.getText();
-				
-				if(password.contains("king") && username.contains("one")) {
-					txtPassword.setText(null);
-					txtUsername.setText(null);
-				} else
-				{
-					JOptionPane.showMessageDialog(null, "Invalid Login Details", "Management Login Systems", JOptionPane.ERROR_MESSAGE);
-					txtPassword.setText(null);
-					txtUsername.setText(null);
+				for(int i = 0; i < workers.length; i++) {
+					if(workers[i].isName(username) && workers[i].isPassword(password)) {
+						JOptionPane.showMessageDialog(frame, "Login fucking sucsessful", "Management Login Systems", JOptionPane.INFORMATION_MESSAGE);
+						txtPassword.setText(null);
+						txtUsername.setText(null);
+						loggedOn = true;
+						break;
+					} else {
+						JOptionPane.showMessageDialog(frame, "Invalid Login Details", "Management Login Systems", JOptionPane.ERROR_MESSAGE);
+						txtPassword.setText(null);
+						txtUsername.setText(null);
+					}
 				}
 			}
 		});
-		btnLogin.setBounds(71, 210, 89, 23);
+		btnLogin.setBounds(31, 210, 80, 23);
 		frame.getContentPane().add(btnLogin);
+		
+		JButton addBtn = new JButton("Add"); 
+		addBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addEmp(txtUsername.getText(), new String(txtPassword.getPassword()));
+			}
+		});
+		addBtn.setBounds(116, 210, 80, 23);
+		frame.getContentPane().add(addBtn);
 		
 		JButton btnReset = new JButton("Reset");
 		btnReset.addActionListener(new ActionListener() {
@@ -98,8 +119,17 @@ public class login_S {
 				txtPassword.setText(null);
 			}
 		});
-		btnReset.setBounds(204, 210, 89, 23);
+		btnReset.setBounds(204, 210, 80, 23);
 		frame.getContentPane().add(btnReset);
+		
+		JButton removeBtn = new JButton("Remove"); 
+		removeBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				removeEmp(txtUsername.getText(), new String(txtPassword.getPassword()));
+			}
+		});
+		removeBtn.setBounds(292, 210, 80, 23);
+		frame.getContentPane().add(removeBtn);
 		
 		JButton btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
@@ -112,7 +142,7 @@ public class login_S {
 				
 			}
 		});
-		btnExit.setBounds(341, 210, 89, 23);
+		btnExit.setBounds(380, 210, 80, 23);
 		frame.getContentPane().add(btnExit);
 		
 		JSeparator separator = new JSeparator();
@@ -122,5 +152,38 @@ public class login_S {
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setBounds(71, 53, 366, 10);
 		frame.getContentPane().add(separator_1);
+	}
+	
+	public void addEmp(String name, String passwd)
+	{
+		boolean potato = positions.isEmpty();
+		int ind = 0;
+		if(potato == false) {
+			workers[positions.remove(ind)] = new Employee(name, passwd);
+			txtUsername.setText(null);
+			txtPassword.setText(null);
+		}
+		else {
+			txtUsername.setText(null);
+			txtPassword.setText(null);
+		}
+	}
+	
+	public void removeEmp(String name, String password)
+	{
+		for(int i = 0; i < workers.length; i++)
+		{
+			if(!positions.contains(i))
+			{
+				if(workers[i].isName(name) && workers[i].isPassword(password))
+				{
+					positions.add(i, i);
+					workers[i] = null;
+					txtUsername.setText(null);
+					txtPassword.setText(null);
+					break;
+				}
+			}
+		}
 	}
 }
