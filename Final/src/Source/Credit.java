@@ -1,4 +1,4 @@
-package Boba;
+package Source;
 import java.util.Scanner;
 public class Credit {
 	//Set Attributes of Credit Card
