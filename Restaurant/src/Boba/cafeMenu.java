@@ -185,6 +185,7 @@ public class cafeMenu {
 		btnCredit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				showCreditFrame();
+				textArea.setText(null);
 				
 				
 			}
