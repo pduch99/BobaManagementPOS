@@ -190,10 +190,8 @@ public class cafeMenu {
 			}
 
 			private void showCreditFrame() {
-				JFrame creditFrame = new JFrame("Credit Card");
-				creditFrame.setSize(500, 500);
-				creditFrame.setLocationRelativeTo(null);
-				creditFrame.setVisible(true);
+				CreditCardScreen c1 = new CreditCardScreen();
+				CreditCardScreen.main(null);
 				
 			}
 				
