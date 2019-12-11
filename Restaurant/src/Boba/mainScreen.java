@@ -131,11 +131,8 @@ public class mainScreen extends JFrame implements ActionListener {
 	}
 
 	private void showmenuFrame() {
-//		JFrame menuFrame = new JFrame("Menu Items");
-//		menuFrame.setSize(500, 500);
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		menuFrame.setLocationRelativeTo(null);
-//		menuFrame.setVisible(true);
+		cafeMenu s = new cafeMenu();
+		cafeMenu.main(null);
 		
 
 
@@ -150,4 +147,6 @@ public class mainScreen extends JFrame implements ActionListener {
 
 	}
 
+	
 }
+

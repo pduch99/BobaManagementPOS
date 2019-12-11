@@ -180,7 +180,25 @@ public class cafeMenu {
 		btnCash.setBounds(258, 262, 57, 27);
 		frame.getContentPane().add(btnCash);
 		
+
 		JButton btnCredit = new JButton("Credit");
+		btnCredit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				showCreditFrame();
+				
+				
+			}
+
+			private void showCreditFrame() {
+				JFrame creditFrame = new JFrame("Credit Card");
+				creditFrame.setSize(500, 500);
+				creditFrame.setLocationRelativeTo(null);
+				creditFrame.setVisible(true);
+				
+			}
+				
+			}
+		);
 		btnCredit.setBounds(338, 262, 67, 27);
 		frame.getContentPane().add(btnCredit);
 		
