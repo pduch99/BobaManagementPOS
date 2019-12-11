@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -13,6 +15,7 @@ import javax.swing.JTextArea;
 
 public class cafeMenu {
 	double price;
+	double total;
 	private JFrame frame;
 
 	/**
@@ -185,7 +188,6 @@ public class cafeMenu {
 		btnCredit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				showCreditFrame();
-				textArea.setText(null);
 				
 				
 			}
@@ -202,6 +204,28 @@ public class cafeMenu {
 		frame.getContentPane().add(btnCredit);
 		
 		JButton button = new JButton("$10");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Double totals = 0.0;
+				totals = total - 10;
+				if(totals > 0) {
+					JOptionPane.showMessageDialog(button, "You are short by " + totals);
+					textArea.setText(null);
+				}
+				else if(totals == 0){
+					JOptionPane.showMessageDialog(button, "You have paid even have a good day ");
+					textArea.setText(null);
+					
+				}
+				else {
+					JOptionPane.showMessageDialog(button, "You're change is " + totals * -1);
+					textArea.setText(null);
+					
+				}
+				
+				
+			}
+		});
 		button.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		button.setBounds(10, 264, 45, 21);
 		frame.getContentPane().add(button);
@@ -215,7 +239,7 @@ public class cafeMenu {
 				df2.format(price);
 				textArea.append("Subtotal: " + Double.toString(price)+"\n");
 				textArea.append("Tax: " + Double.toString(tax)+"\n");
-				Double total = price + tax;
+				total = price + tax;
 				df2.format(total);
 				textArea.append("Total: " + Double.toString(total)+"\n");
 					
@@ -226,18 +250,83 @@ public class cafeMenu {
 		frame.getContentPane().add(totalButton);
 		
 		JButton button20 = new JButton("$20");
+		button20.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Double totals = 0.0;
+				totals = total - 20;
+				if(totals > 0) {
+					JOptionPane.showMessageDialog(button20, "You are short by " + totals);
+					textArea.setText(null);
+				}
+				else if(totals == 0){
+					JOptionPane.showMessageDialog(button20, "You have paid even have a good day ");
+					textArea.setText(null);
+					
+				}
+				else {
+					JOptionPane.showMessageDialog(button20, "You're change is " + totals * -1);
+					textArea.setText(null);
+					
+				}
+				
+				
+				
+			}
+		});
+		
 		button20.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		button20.setBounds(71, 264, 45, 21);
 		frame.getContentPane().add(button20);
 		
 		JButton button_5 = new JButton("$50");
+		button_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Double totals = 0.0;
+				totals = total - 50;
+				if(totals > 0) {
+					JOptionPane.showMessageDialog(button_5, "You are short by " + total);
+					textArea.setText(null);
+				}
+				else if(totals == 0){
+					JOptionPane.showMessageDialog(button_5, "You have paid even have a good day ");
+					textArea.setText(null);
+				}
+				else {
+					JOptionPane.showMessageDialog(button_5, "Your change is " + total * -1);
+					textArea.setText(null);
+				}
+				
+				
+			}
+		});
 		button_5.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		button_5.setBounds(131, 265, 51, 21);
 		frame.getContentPane().add(button_5);
 		
 		JButton button_6 = new JButton("$100");
+		button_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Double totals = 0.0;
+				totals = total - 50;
+				if(totals > 0) {
+					JOptionPane.showMessageDialog(button_6, "You are short by " + total);
+					textArea.setText(null);
+				}
+				else if(totals == 0){
+					JOptionPane.showMessageDialog(button_6, "You have paid even have a good day ");
+					textArea.setText(null);
+				}
+				else {
+					JOptionPane.showMessageDialog(button_6, "Your change is " + total * -1);
+					textArea.setText(null);
+				}
+				
+				
+			}
+		});
 		button_6.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		button_6.setBounds(192, 266, 51, 21);
 		frame.getContentPane().add(button_6);
+		
 	}
 }
