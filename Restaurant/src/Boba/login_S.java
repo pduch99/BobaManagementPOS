@@ -19,8 +19,8 @@ public class login_S {
 	private JFrame frame;
 	private JTextField txtUsername;
 	private JPasswordField txtPassword;
-	private Employee[] workers = new Employee[10];
-	private ArrayList<Integer> positions = new ArrayList<Integer>(10); //keeps track of the open indexes in workers
+	private static Employee[] workers = new Employee[10];
+	private static ArrayList<Integer> positions = new ArrayList<Integer>(10); //keeps track of the open indexes in workers
 	public static boolean loggedOn = false; //Tracks if a user is logged on, 
 	private static String loggedUser;
 
@@ -47,6 +47,7 @@ public class login_S {
 		for(int i = 0; i < 10; i++)
 		{
 			positions.add(i, i);
+			System.out.println(i);
 		}
 		initialize();
 	}
@@ -86,21 +87,25 @@ public class login_S {
 			public void actionPerformed(ActionEvent e) {
 				String password = new String(txtPassword.getPassword());
 				String username = txtUsername.getText();
+				boolean succ = false;
+				
 				for(int i = 0; i < workers.length; i++) {
-					if(workers[i].isName(username) && workers[i].isPassword(password)) {
-						JOptionPane.showMessageDialog(frame, "Login sucsessful", "Management Login Systems", JOptionPane.INFORMATION_MESSAGE);
-						txtPassword.setText(null);
-						txtUsername.setText(null);
-						loggedOn = true;
-						loggedUser = username;
-						mainScreen.employLbl.setText("Welcome " + username);
-						break;
-					} else {
-						JOptionPane.showMessageDialog(frame, "Invalid Login Details", "Management Login Systems", JOptionPane.ERROR_MESSAGE);
-						txtPassword.setText(null);
-						txtUsername.setText(null);
+					if(workers[i] != null) {
+						if(workers[i].isName(username) && workers[i].isPassword(password)) {
+							JOptionPane.showMessageDialog(frame, "Login sucsessful", "Management Login Systems", JOptionPane.INFORMATION_MESSAGE);
+							loggedOn = true;
+							succ = true;
+							loggedUser = username;
+							mainScreen.employLbl.setText("Welcome " + username);
+							break;
+						}
 					}
 				}
+				if(succ == false) {
+					JOptionPane.showMessageDialog(frame, "Invalid Login Details", "Management Login Systems", JOptionPane.ERROR_MESSAGE);
+				}
+				txtUsername.setText(null);
+				txtPassword.setText(null);
 			}
 		});
 		btnLogin.setBounds(31, 210, 80, 23);
@@ -180,7 +185,7 @@ public class login_S {
 			{
 				if(workers[i].isName(name) && workers[i].isPassword(password))
 				{
-					positions.add(i, i);
+					positions.add(i);
 					workers[i] = null;
 					txtUsername.setText(null);
 					txtPassword.setText(null);

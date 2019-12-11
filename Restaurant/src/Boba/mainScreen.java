@@ -109,7 +109,7 @@ public class mainScreen extends JFrame implements ActionListener {
 		} else if (callingBtn.equals("Manager Hub")) {
 			// System.out.println("You can now log in");
 			if (e.getSource() == managementBtn) {
-				login_S fr = new login_S();
+				//login_S fr = new login_S();
 				login_S.main(null);
 				
 			}
