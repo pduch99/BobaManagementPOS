@@ -7,11 +7,12 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 
 public class cafeMenu {
-
+	double price;
 	private JFrame frame;
 
 	/**
@@ -51,7 +52,7 @@ public class cafeMenu {
 		Drinks d5 = new Drinks("Vanilla Shake",4.00);
 		Drinks d6 = new Drinks("Tea Latte",4.00);
 		frame = new JFrame();
-		frame.setBounds(300, 300, 450, 350);
+		frame.setBounds(500, 400, 550, 450);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -71,14 +72,14 @@ public class cafeMenu {
 		frame.getContentPane().add(lblAllTeaIs);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(258, 55, 147, 207);
+		textArea.setBounds(258, 55, 247, 207);
 		frame.getContentPane().add(textArea);
 		
 		JButton btnIcedTea = new JButton("Add $4");
 		btnIcedTea.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textArea.append(d.toString());
-		
+				price = price+4;
 				
 				
 			}
@@ -91,7 +92,7 @@ public class cafeMenu {
 		chaiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textArea.append(d2.toString());
-		
+				price = price+4;
 				
 				
 			}
@@ -109,6 +110,7 @@ public class cafeMenu {
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textArea.append(d4.toString());
+				price = price+5;
 				
 			}
 		});
@@ -120,7 +122,7 @@ public class cafeMenu {
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textArea.append(d6.toString());
-				
+				price = price+4;
 			}
 		});
 		button_2.setFont(new Font("Tahoma", Font.PLAIN, 9));
@@ -131,7 +133,7 @@ public class cafeMenu {
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textArea.append(d3.toString());
-		
+				price = price+4;
 				
 				
 			}
@@ -144,7 +146,7 @@ public class cafeMenu {
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textArea.append(d5.toString());
-		
+				price = price+4;
 				
 				
 			}
@@ -187,10 +189,24 @@ public class cafeMenu {
 		button.setBounds(10, 264, 45, 21);
 		frame.getContentPane().add(button);
 		
-		JButton cancelButton = new JButton("Cancel");
-		cancelButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		cancelButton.setBounds(297, 31, 61, 23);
-		frame.getContentPane().add(cancelButton);
+		JButton totalButton = new JButton("Total");
+		totalButton.addActionListener(new ActionListener() {
+			private DecimalFormat df2 = new DecimalFormat("#.##");
+			public void actionPerformed(ActionEvent e) {
+				Double tax = .1725 * price;
+				df2.format(tax);
+				df2.format(price);
+				textArea.append("Subtotal: " + Double.toString(price)+"\n");
+				textArea.append("Tax: " + Double.toString(tax)+"\n");
+				Double total = price + tax;
+				df2.format(total);
+				textArea.append("Total: " + Double.toString(total)+"\n");
+					
+			}
+		});
+		totalButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		totalButton.setBounds(297, 31, 61, 23);
+		frame.getContentPane().add(totalButton);
 		
 		JButton button20 = new JButton("$20");
 		button20.setFont(new Font("Tahoma", Font.PLAIN, 8));
