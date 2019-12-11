@@ -28,6 +28,7 @@ public class cafeMenu {
 				}
 			}
 		});
+	
 	}
 
 	/**
@@ -39,8 +40,16 @@ public class cafeMenu {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @return 
 	 */
+		
 	private void initialize() {
+		Drinks d = new Drinks("Green/Black Tea",4.00);
+		Drinks d2 = new Drinks("Chai Tea",4.00);
+		Drinks d3 = new Drinks("MilK Tea",4.00);
+		Drinks d4 = new Drinks("Cooler",5.00);
+		Drinks d5 = new Drinks("Vanilla Shake",4.00);
+		Drinks d6 = new Drinks("Tea Latte",4.00);
 		frame = new JFrame();
 		frame.setBounds(300, 300, 450, 350);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,10 +77,8 @@ public class cafeMenu {
 		JButton btnIcedTea = new JButton("Add $4");
 		btnIcedTea.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int IcedTeaP = 4;
-			//	String addIceT = ""
-				//textArea.append(str);
-				
+				textArea.append(d.toString());
+		
 				
 				
 			}
@@ -81,6 +88,14 @@ public class cafeMenu {
 		frame.getContentPane().add(btnIcedTea);
 		
 		JButton chaiButton = new JButton("Add $4");
+		chaiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.append(d2.toString());
+		
+				
+				
+			}
+		});
 		chaiButton.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		chaiButton.setBounds(33, 134, 57, 14);
 		frame.getContentPane().add(chaiButton);
@@ -91,11 +106,23 @@ public class cafeMenu {
 		frame.getContentPane().add(lblChaiTea);
 		
 		JButton btnAdd = new JButton("Add $5");
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.append(d4.toString());
+				
+			}
+		});
 		btnAdd.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnAdd.setBounds(33, 176, 61, 14);
 		frame.getContentPane().add(btnAdd);
 		
 		JButton button_2 = new JButton("Add $4");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.append(d6.toString());
+				
+			}
+		});
 		button_2.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		button_2.setBounds(168, 85, 61, 14);
 		frame.getContentPane().add(button_2);
@@ -103,6 +130,10 @@ public class cafeMenu {
 		JButton button_3 = new JButton("Add $4");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				textArea.append(d3.toString());
+		
+				
+				
 			}
 		});
 		button_3.setFont(new Font("Tahoma", Font.PLAIN, 9));
@@ -110,6 +141,14 @@ public class cafeMenu {
 		frame.getContentPane().add(button_3);
 		
 		JButton button_4 = new JButton("Add $4");
+		button_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.append(d5.toString());
+		
+				
+				
+			}
+		});
 		button_4.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		button_4.setBounds(168, 176, 61, 14);
 		frame.getContentPane().add(button_4);
