@@ -180,6 +180,14 @@ public class cafeMenu {
 		
 		
 		JButton btnCash = new JButton("Cash");
+		btnCash.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			showCashFrame();
+			
+			
+			
+		}
+		});		
 		btnCash.setBounds(258, 262, 57, 27);
 		frame.getContentPane().add(btnCash);
 		
@@ -190,11 +198,15 @@ public class cafeMenu {
 				showCreditFrame();
 				
 				
+				
 			}
 
 			private void showCreditFrame() {
 				CreditCardScreen c1 = new CreditCardScreen();
 				CreditCardScreen.main(null);
+				textArea.setText(null);
+				price = 0;
+				total = 0;
 				
 			}
 				
@@ -215,11 +227,15 @@ public class cafeMenu {
 				else if(totals == 0){
 					JOptionPane.showMessageDialog(button, "You have paid even have a good day ");
 					textArea.setText(null);
+					price = 0;
+					total = 0;
 					
 				}
 				else {
 					JOptionPane.showMessageDialog(button, "You're change is " + totals * -1);
 					textArea.setText(null);
+					price = 0;
+					total = 0;
 					
 				}
 				
@@ -261,11 +277,15 @@ public class cafeMenu {
 				else if(totals == 0){
 					JOptionPane.showMessageDialog(button20, "You have paid even have a good day ");
 					textArea.setText(null);
+					price = 0;
+					total = 0;
 					
 				}
 				else {
 					JOptionPane.showMessageDialog(button20, "You're change is " + totals * -1);
 					textArea.setText(null);
+					price = 0;
+					total = 0;
 					
 				}
 				
@@ -290,10 +310,14 @@ public class cafeMenu {
 				else if(totals == 0){
 					JOptionPane.showMessageDialog(button_5, "You have paid even have a good day ");
 					textArea.setText(null);
+					price = 0;
+					total = 0;
 				}
 				else {
 					JOptionPane.showMessageDialog(button_5, "Your change is " + total * -1);
 					textArea.setText(null);
+					price = 0;
+					total = 0;
 				}
 				
 				
@@ -315,10 +339,14 @@ public class cafeMenu {
 				else if(totals == 0){
 					JOptionPane.showMessageDialog(button_6, "You have paid even have a good day ");
 					textArea.setText(null);
+					price = 0;
+					total = 0;
 				}
 				else {
 					JOptionPane.showMessageDialog(button_6, "Your change is " + total * -1);
 					textArea.setText(null);
+					price = 0;
+					total = 0;
 				}
 				
 				
@@ -327,6 +355,12 @@ public class cafeMenu {
 		button_6.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		button_6.setBounds(192, 266, 51, 21);
 		frame.getContentPane().add(button_6);
+		
+	}
+
+	private void showCashFrame() {
+		Cash cash = new Cash();
+		Cash.main(null);
 		
 	}
 }

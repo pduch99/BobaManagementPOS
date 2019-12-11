@@ -92,7 +92,6 @@ public class CreditCardScreen {
 			String creditnumber = textField_1.getText();
 			String creditCCV = textField_2.getText();
 			JOptionPane.showMessageDialog(frame, "Card Accepted", "Credit System", JOptionPane.INFORMATION_MESSAGE);
-			
 			frame.dispose();
 			}
 		});
