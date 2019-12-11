@@ -47,7 +47,7 @@ public class login_S {
 		for(int i = 0; i < 10; i++)
 		{
 			positions.add(i, i);
-			System.out.println(i);
+			//System.out.println(i);
 		}
 		initialize();
 	}
@@ -97,6 +97,7 @@ public class login_S {
 							succ = true;
 							loggedUser = username;
 							mainScreen.employLbl.setText("Welcome " + username);
+							frame.dispose();
 							break;
 						}
 					}

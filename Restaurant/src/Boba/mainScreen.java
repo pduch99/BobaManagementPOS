@@ -7,10 +7,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import javax.swing.*;
 
 public class mainScreen extends JFrame implements ActionListener {
@@ -54,7 +50,7 @@ public class mainScreen extends JFrame implements ActionListener {
 
 	private void createTopPanel() {
 		topPanel.add(managementBtn);
-		topPanel.add(loginBtn);
+		/*topPanel.add(loginBtn);*/
 		topPanel.add(restaurantBtn);
 	}
 	
@@ -131,9 +127,13 @@ public class mainScreen extends JFrame implements ActionListener {
 	}
 
 	private void showmenuFrame() {
-		cafeMenu s = new cafeMenu();
-		cafeMenu.main(null);
-		
+		//cafeMenu s = new cafeMenu();
+		if(login_S.loggedOn == true)
+		{
+			cafeMenu.main(null);
+		} else {
+			JOptionPane.showMessageDialog(this, "Please log in to acsess the menu.", "Notice", JOptionPane.INFORMATION_MESSAGE);
+		}
 
 
 	}
